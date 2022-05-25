@@ -1,3 +1,9 @@
 https://www.youtube.com/watch?v=9A3paYRHvDQ&t=808s
 
+- build
+docker build -t devric/kubenode_cart .
+docker build -t devric/kubenode_products .
+
 - push dockerhub
+docker push devric/kubenode_cart
+docker push devric/kubenode_products

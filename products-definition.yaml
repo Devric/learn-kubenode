@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #creationTimestamp: null
+  #labels:
+  #  app: products
+  name: products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products
+  #strategy: {}
+  template:
+    metadata:
+      #creationTimestamp: null
+      labels:
+        app: products # pod name
+    spec:
+      containers:
+      - image: devric/kubenode_products
+        name: kubenode-products-p27pc
+        #resources: {}
+#status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-service
+spec:
+  selector:
+    app: products # this is the pod selector
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000

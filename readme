@@ -7,3 +7,11 @@ docker build -t devric/kubenode_products .
 - push dockerhub
 docker push devric/kubenode_cart
 docker push devric/kubenode_products
+
+- generate deployment definition using dry run
+kubectl create deploy products --image=devric/kubenode_products --dry-run=client -o yaml > products-definition.yaml
+
+- add service definition manually into products-definition.yaml
+
+- create pods/services
+k create -f products-definition.yaml

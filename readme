@@ -15,3 +15,10 @@ kubectl create deploy products --image=devric/kubenode_products --dry-run=client
 
 - create pods/services
 k create -f products-definition.yaml
+
+- testing with temporary pod
+-- use --rm -ti to delete pod on exit
+ k run nginx --image=nginx --rm -ti --restart=Never -- /bin/sh
+
+-- curl the service
+curl products-service:3000/api/products

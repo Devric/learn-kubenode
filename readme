@@ -22,3 +22,6 @@ k create -f products-definition.yaml
 
 -- curl the service
 curl products-service:3000/api/products
+
+-- check pods
+k get all

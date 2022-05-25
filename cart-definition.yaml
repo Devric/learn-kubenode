@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #creationTimestamp: null
+  #labels:
+  #  app: cart
+  name: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  #strategy: {}
+  template:
+    metadata:
+      #creationTimestamp: null
+      labels:
+        app: cart # pod name
+    spec:
+      containers:
+      - image: devric/kubenode_cart
+        name: kubenode-cart-p27pc
+        #resources: {}
+#status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-service
+spec:
+  selector:
+    app: cart # this is the pod selector
+  ports:
+  - protocol: TCP
+    port: 3001
+    targetPort: 3001

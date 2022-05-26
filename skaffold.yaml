@@ -1,0 +1,29 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+metadata:
+  name: nodekube-skaffold
+build:
+  artifacts:
+  - image: devric/kubenode_cart
+    context: cart
+    # add this sync section to sync local files to container
+    sync:
+      manual:
+        - src: "src/**/*.js"
+          dest: "." # this goes to the /app folder in the container
+    docker:
+      dockerfile: Dockerfile
+  - image: devric/kubenode_products
+    context: products
+    sync:
+      manual:
+        - src: "src/**/*.js"
+          dest: "." # this goes to the /app folder in the container
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - cart-definition.yaml
+    - ingress.yaml
+    - products-definition.yaml

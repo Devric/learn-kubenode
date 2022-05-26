@@ -29,8 +29,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 - update the ingress file using example for v1
 k create -f ingress.yaml
 
+- generate skaffold file
+skaffold init
 
-
+- start skaffold dev server
+skaffold dev
 
 
 

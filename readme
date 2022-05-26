@@ -18,10 +18,25 @@ k create -f products-definition.yaml
 
 - testing with temporary pod
 -- use --rm -ti to delete pod on exit
- k run nginx --image=nginx --rm -ti --restart=Never -- /bin/sh
+k run nginx --image=nginx --rm -ti --restart=Never -- /bin/sh
 
--- curl the service
+- curl the service
 curl products-service:3000/api/products
 
--- check pods
+- add nginx ingress
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
+
+- update the ingress file using example for v1
+k create -f ingress.yaml
+
+
+
+
+
+
+
+
+- kube commands
+==========================================
 k get all
+k get svc --all-namespaces

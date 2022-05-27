@@ -24,6 +24,6 @@ build:
 deploy:
   kubectl:
     manifests:
-    - cart-definition.yaml
-    - ingress.yaml
-    - products-definition.yaml
+    - k8s/cart-definition.yaml
+    - k8s/ingress.yaml
+    - k8s/products-definition.yaml

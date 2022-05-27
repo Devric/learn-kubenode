@@ -5,6 +5,7 @@ metadata:
   #labels:
   #  app: products
   name: products
+  namespace: kubenode-dev
 spec:
   replicas: 1
   selector:
@@ -29,6 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: products-service
+  namespace: kubenode-dev
 spec:
   selector:
     app: products # this is the pod selector
